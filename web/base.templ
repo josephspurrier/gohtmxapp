@@ -1,0 +1,43 @@
+package web
+
+templ Head() {
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<title>gohtmxapp</title>
+		<link rel="icon" type="image/png" href={ assetPath(ctx, "/assets/favicon/favicon-96x96.png") } sizes="96x96"/>
+		<link rel="icon" type="image/svg+xml" href={ assetPath(ctx, "/assets/favicon/favicon.svg") }/>
+		<link rel="shortcut icon" href={ assetPath(ctx, "/assets/favicon/favicon.ico") }/>
+		<link rel="apple-touch-icon" sizes="180x180" href={ assetPath(ctx, "/assets/favicon/apple-touch-icon.png") }/>
+		<link rel="manifest" href={ assetPath(ctx, "/assets/favicon/site.webmanifest") }/>
+		<link href={ assetPath(ctx, "/assets/css/style.css") } rel="stylesheet"/>
+		<script src={ assetPath(ctx, "/assets/js/htmx.min.js") }></script>
+		<script src={ assetPath(ctx, "/assets/js/flowbite.min.js") }></script>
+		if hotReload() {
+			<script src={ assetPath(ctx, "/assets/js/hotreload.js") }></script>
+		}
+	</head>
+}
+
+templ Base(title string) {
+	<!DOCTYPE html>
+	<html lang="en" class="h-screen">
+		@Head()
+		// Ensure that on any requests/changes (link on the hyperlinks), the JavaScript is reloaded for things like menu dropdowns.
+		<body hx-on::after-request="initFlowbite();">
+			@Body(title) {
+				<main>
+					{ children... }
+				</main>
+			}
+		</body>
+	</html>
+}
+
+templ Body(title string) {
+	@SideNav()
+	<div class="p-4 sm:ml-64">
+		<h1 class="text-4xl font-semibold dark:text-white">{ title }</h1>
+		{ children... }
+	</div>
+}
