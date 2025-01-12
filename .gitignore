@@ -40,3 +40,7 @@ node_modules
 # Tailwind CSS
 web/assets/css/style.css
 tailwindcss
+
+# Dependency output.
+web/assets/js/flowbite.min.js
+web/assets/js/htmx.min.js

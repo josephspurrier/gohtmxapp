@@ -1,6 +1,6 @@
 # gohtmxapp
 
-This is a sample application that uses a [Go](https://go.dev/) backend to serve content using [HTMX](https://htmx.org/). For styling, it uses [Tailwind](https://tailwindcss.com/) and [Flowbite](https://flowbite.com/). It supports live reloading (using [Air](https://github.com/air-verse/air)) and browser reloading (simply using server-sent events). Assets are hashed using [hashfs](https://github.com/benbjohnson/hashfs).
+This is a sample application that uses a [Go](https://go.dev/) backend to serve content using [HTMX](https://htmx.org/) and [Templ](https://templ.guide/). For styling, it uses [Tailwind](https://tailwindcss.com/) and [Flowbite](https://flowbite.com/). It supports live reloading (using [Air](https://github.com/air-verse/air)) and browser reloading (simply using server-sent events). Assets are hashed using [hashfs](https://github.com/benbjohnson/hashfs).
 
 The reason why I like this approach is it keeps the majority of your front-end logic in Go and HTML so it does not require a front-end framework like React or Vue, it uses the HTMX library to provide many of the features of dynamic web applications like loading content without having to do a full page render.
 
@@ -24,8 +24,8 @@ make install
 # Start the web server with reload capability.
 make watch
 
-# Open your browser to view the application. 
-open http://localhost:8080
+# Open your browser to view the application: http://localhost:8080/dashboard
+# Most of the pages are placeholders, but a few pages do have content: Dashboard, Test Form, and Settings.
 ```
 
 ## Overview

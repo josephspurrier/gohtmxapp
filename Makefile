@@ -4,7 +4,7 @@
 all: build test
 
 install: tailwind-install templ-install
-	@npm make install
+	@npm install
 	@npm run build
 
 templ-install:

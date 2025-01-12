@@ -20,7 +20,7 @@ func hotReload(mux *http.ServeMux) {
 		maxSeconds := 20
 		delaySeconds := 1
 
-		mux.HandleFunc("/sse", func(w http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc("/reload", func(w http.ResponseWriter, _ *http.Request) {
 			flusher, ok := w.(http.Flusher)
 			if !ok {
 				http.Error(w, "Server does not support flusher!", http.StatusInternalServerError)
@@ -46,7 +46,7 @@ func hotReload(mux *http.ServeMux) {
 				time.Sleep(time.Duration(delaySeconds) * time.Second)
 
 				// Prevent this error by closing the connection before the browser closes it:
-				// GET http://localhost:8080/sse net::ERR_INCOMPLETE_CHUNKED_ENCODING 200 (OK)
+				// GET http://localhost:8080/reload net::ERR_INCOMPLETE_CHUNKED_ENCODING 200 (OK)
 				counter++
 				if counter*delaySeconds >= maxSeconds {
 					return

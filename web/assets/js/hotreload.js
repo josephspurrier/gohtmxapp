@@ -1,4 +1,4 @@
-const eventSource = new EventSource('/sse');
+const eventSource = new EventSource('/reload');
 
 eventSource.onmessage = (event) => {
     if (event.data === 'reload') {
