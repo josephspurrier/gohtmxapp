@@ -4,6 +4,11 @@ This is a sample application that uses a [Go](https://go.dev/) backend to serve 
 
 The reason why I like this approach is it keeps the majority of your front-end logic in Go and HTML so it does not require a front-end framework like React or Vue, it uses the HTMX library to provide many of the features of dynamic web applications like loading content without having to do a full page render.
 
+Some of the unique features are explained below in how they flow from config to Go to HTML templates:
+- **Browser reloading**: enabled from a config file (.env), stored in the request context (server/middleware.go), loaded from request context by a web helper (web/helpers.go), then used as a conditional in the web template (web/base.templ). The handler the sends the SSE is in server/reload.go. The javascript code that listens for SSEs is in web/assets/js/hotreload.js.
+- **Asset hashing**: enabled from a config file (.env), stored in the request context (server/middleware.go), enabled on the assets (server/routes.go), loaded from request context by a web helper (web/helpers.go), then used on each asset in the web template (web/base.templ).
+- **Active page determination**: URL is stored in the request context (server/middleware.go), web helper determine if the URL matches the current page from request context (web/helpers.go), and it's used in web templates on menu items (web/navigation.templ).
+
 **Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code. There are UI things that could be improved. Known UI bugs that probably have quick solutions but doesn't affect this demonstration:
 - after clicking a submenu item, it requires clicking twice to get it to open again
 - when strinking the window, the point where the bottom nav menu disappears and the left menu disappears is set differently
@@ -43,9 +48,9 @@ This projects uses a combination of tools to make management of dependencies, re
 
 To install any dependencies using npm, you should install them as dev dependencies like this: `npm install -D htmx.org@2`. The `make install` command does call the npm scripts to copy the dependencies to the correct `web/assets/js` folder.
 
-This project was created initially using Go-Blueprint: https://docs.go-blueprint.dev/creating-project/project-init/
+This project was created initially using [Go-Blueprint ](https://docs.go-blueprint.dev/creating-project/project-init/) and then modified to fit my needs.
 
-You should update the assets/favicon folder with your own Favicon: http://realfavicongenerator.net.
+You can update the assets/favicon folder with your own Favicon: http://realfavicongenerator.net.
 
 ### Config 
 
