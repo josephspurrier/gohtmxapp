@@ -4,7 +4,9 @@ This is a sample application that uses a [Go](https://go.dev/) backend to serve 
 
 The reason why I like this approach is it keeps the majority of your front-end logic in Go and HTML so it does not require a front-end framework like React or Vue, it uses the HTMX library to provide many of the features of dynamic web applications like loading content without having to do a full page render.
 
-**Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code.
+**Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code. There are UI things that could be improved. Known UI bugs that probably have quick solutions but doesn't affect this demonstration:
+- after clicking a submenu item, it requires clicking twice to get it to open again
+- when strinking the window, the point where the bottom nav menu disappears and the left menu disappears is set differently
 
 ## Quick Start
 
