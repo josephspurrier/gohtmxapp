@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="1000" height="1000">
+  <g>
+    <rect width="1000" height="1000" fill="#ffffff"></rect>
+    <g transform="matrix(2.5,0,0,2.5,0,0)">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="400" height="400">
+        <svg id="SvgjsSvg1009" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="0, 0, 400,400">
+          <g id="SvgjsG1008">
+            <path id="SvgjsPath1007" d="M 0 0 H 400 V 400 H 0 Z" stroke="none" fill="#448ccc" fill-rule="evenodd">
+            </path>
+            <path id="SvgjsPath1006" d="M 0 280 H 400 V 400 H 0 Z" stroke="none" fill="#ecac4c" fill-rule="evenodd">
+            </path>
+            <path id="SvgjsPath1005" d="M89.453 203.516 L 89.453 358.203 121.289 358.203 L 153.125 358.203 153.125 301.560 L 153.125 244.916 178.550 245.017 L 203.974 245.117 215.186 266.992 C 221.353 279.023,234.379 304.468,244.134 323.535 L 261.870 358.203 296.169 358.203 L 330.469 358.203 330.469 356.860 C 330.469 355.841,326.351 347.750,313.422 323.364 C 304.046 305.680,288.947 277.192,279.869 260.059 L 263.362 228.906 269.197 225.922 C 304.320 207.960,320.403 178.512,318.314 135.990 C 315.933 87.505,284.598 57.254,229.688 50.429 C 217.914 48.965,211.041 48.828,149.371 48.828 L 89.453 48.828 89.453 203.516 M212.556 100.786 C 238.571 103.327,252.643 117.260,254.681 142.496 C 256.605 166.313,245.689 183.982,225.000 190.541 C 216.851 193.124,216.974 193.116,183.496 193.264 L 153.125 193.399 153.125 146.895 L 153.125 100.391 180.818 100.391 C 196.566 100.391,210.256 100.561,212.556 100.786 " stroke="none" fill="#fbfbfb" fill-rule="evenodd">
+            </path>
+          </g>
+        </svg>
+      </svg>
+    </g>
+  </g>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

@@ -1,0 +1,14 @@
+{
+    "name": "gohtmxapp",
+    "version": "1.0.0",
+    "private": true,
+    "devDependencies": {
+        "flowbite": "^2.5.2",
+        "htmx.org": "^2.0.4"
+    },
+    "scripts": {
+        "build": "npm run build:htmx && npm run build:flowbite && echo Done!",
+        "build:htmx": "cp node_modules/htmx.org/dist/htmx.min.js web/assets/js/",
+        "build:flowbite": "cp node_modules/flowbite/dist/flowbite.min.js web/assets/js/"
+    }
+}
