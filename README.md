@@ -100,6 +100,6 @@ make build
 # Run the application.
 make run
 
-# Run the test suite
+# Run the test suite.
 make test
 ```
