@@ -10,8 +10,7 @@ Some of the unique features are explained below in how they flow from config to 
 - **Active page determination**: URL is stored in the request context (server/middleware.go), web helper determine if the URL matches the current page from request context (web/helpers.go), and it's used in web templates on menu items (web/navigation.templ).
 - **Navmenu Reloading**: stored in the request context (server/middleware.go), loaded from request context by a web helper (web/helpers.go), then referenced in the web template (web/navigation.templ).
 
-**Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code. There are UI things that could be improved. Known UI bugs that probably have quick solutions but doesn't affect this demonstration:
-- when strinking the window, the point where the bottom nav menu disappears and the left menu disappears is set differently
+**Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code. There are UI elements that could be improved.
 
 ## Quick Start
 
