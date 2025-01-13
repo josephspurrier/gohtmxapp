@@ -43,6 +43,8 @@ func (s *Server) templateVariableMiddleware(next http.Handler) http.Handler {
 		ctx := context.WithValue(r.Context(), pkg.ContextHashed, s.hashedAssets)
 		// Store the page URL.
 		ctx = context.WithValue(ctx, pkg.ContextPageURL, r.URL.Path)
+		// Store the submenu name.
+		ctx = context.WithValue(ctx, pkg.ContextSubmenuName, r.URL.Query().Get(pkg.SubmenuQueryParameter))
 
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})

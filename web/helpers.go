@@ -2,6 +2,7 @@ package web
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"strconv"
 	"strings"
@@ -33,4 +34,20 @@ func isActive(ctx context.Context, urlPath string) string {
 	}
 
 	return ""
+}
+
+// navbarSubmenuHidden returns 'hidden' if the submenu is not open.
+func navbarSubmenuHidden(ctx context.Context, submenu string) string {
+	if submenu != pkg.ContextString(ctx, pkg.ContextSubmenuName) {
+		return "hidden"
+	}
+
+	return ""
+}
+
+// hxValMap returns a JSON string from a map for hx-vals.
+func hxValMap(m map[string]string) string {
+	bytes, _ := json.Marshal(m)
+
+	return string(bytes)
 }

@@ -11,6 +11,11 @@ var (
 
 	// ContextPageURL is the template variable for the current page URL. It can be used to determine the active page.
 	ContextPageURL = ContextKey("pageURL")
+
+	// ContextSubmenuName is the template variable for the submenu that should be open.
+	ContextSubmenuName = ContextKey("submenuName")
+	// SubmenuQueryParameter is the name of the submenu query paramter.
+	SubmenuQueryParameter = "open_submenu"
 )
 
 // ContextBool returns if the context key is true.

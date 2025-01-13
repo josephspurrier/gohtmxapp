@@ -1,5 +1,9 @@
 package web
 
+import "github.com/josephspurrier/gohtmxapp/pkg"
+
+const dropdownMenu = "dropdown-example"
+
 templ SideNav() {
 	<button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
 		<span class="sr-only">Open sidebar</span>
@@ -26,7 +30,17 @@ templ SideNav() {
 					}
 				</li>
 				<li>
-					<button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+					<button
+						type="button"
+						class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+						aria-controls={ dropdownMenu }
+						data-collapse-toggle={ dropdownMenu }
+						if navbarSubmenuHidden(ctx, dropdownMenu)=="hidden" {
+							aria-expanded="false"
+						} else {
+							aria-expanded="true"
+						}
+					>
 						<svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
 							<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"></path>
 						</svg>
@@ -35,19 +49,19 @@ templ SideNav() {
 							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
 						</svg>
 					</button>
-					<ul id="dropdown-example" class="hidden py-2 space-y-2">
+					<ul id={ dropdownMenu } class={ navbarSubmenuHidden(ctx,dropdownMenu),"py-2 space-y-2" }>
 						<li>
-							@SideNavMenuSubItem("/products") {
+							@SideNavMenuSubItem("/products", dropdownMenu) {
 								Products
 							}
 						</li>
 						<li>
-							@SideNavMenuSubItem("/billing") {
+							@SideNavMenuSubItem("/billing", dropdownMenu) {
 								Billing
 							}
 						</li>
 						<li>
-							@SideNavMenuSubItem("/invoice") {
+							@SideNavMenuSubItem("/invoice", dropdownMenu) {
 								Invoice
 							}
 						</li>
@@ -79,9 +93,9 @@ templ SideNav() {
 
 templ SideNavBottom() {
 	<div class="absolute bottom-0 left-0 justify-center hidden w-full p-4 space-x-4 lg:flex" sidebar-bottom-menu="">
-		@SideNavBottomMenuItem("/preferences", "") {
+		<a href="#" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
 			<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>
-		}
+		</a>
 		@SideNavBottomMenuItem("/settings", "tooltip-settings") {
 			<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
 		}
@@ -165,10 +179,8 @@ templ SideNavBottom() {
 // the current URL.
 templ SideNavMenuItem(URL string, name string) {
 	<a
-		href="#"
-		hx-get={ URL }
-		hx-target="body"
-		hx-replace-url="true"
+		href={ templ.URL(URL) }
+		hx-boost="true"
 		class={ isActive(ctx, URL), "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" }
 	>
 		{ children... }
@@ -178,12 +190,13 @@ templ SideNavMenuItem(URL string, name string) {
 	</a>
 }
 
-templ SideNavMenuSubItem(URL string) {
+templ SideNavMenuSubItem(URL string, dropdownName string) {
 	<a
-		href="#"
-		hx-get={ URL }
-		hx-target="body"
-		hx-replace-url="true"
+		href={ templ.URL(URL) }
+		hx-boost="true"
+		hx-vals={ hxValMap(map[string]string{
+			pkg.SubmenuQueryParameter: dropdownName,
+		}) }
 		class={ isActive(ctx, URL), "flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" }
 	>
 		{ children... }
@@ -192,8 +205,8 @@ templ SideNavMenuSubItem(URL string) {
 
 templ SideNavBottomMenuItem(URL string, tooltipTarget string) {
 	<a
-		href="#"
-		hx-get={ URL }
+		href={ templ.URL(URL) }
+		hx-boost="true"
 		if len(tooltipTarget) > 0 {
 			data-tooltip-target={ tooltipTarget }
 		}

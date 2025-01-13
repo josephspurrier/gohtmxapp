@@ -8,9 +8,9 @@ Some of the unique features are explained below in how they flow from config to 
 - **Browser reloading**: enabled from a config file (.env), stored in the request context (server/middleware.go), loaded from request context by a web helper (web/helpers.go), then used as a conditional in the web template (web/base.templ). The handler the sends the SSE is in server/reload.go. The javascript code that listens for SSEs is in web/assets/js/hotreload.js.
 - **Asset hashing**: enabled from a config file (.env), stored in the request context (server/middleware.go), enabled on the assets (server/routes.go), loaded from request context by a web helper (web/helpers.go), then used on each asset in the web template (web/base.templ).
 - **Active page determination**: URL is stored in the request context (server/middleware.go), web helper determine if the URL matches the current page from request context (web/helpers.go), and it's used in web templates on menu items (web/navigation.templ).
+- **Navmenu Reloading**: stored in the request context (server/middleware.go), loaded from request context by a web helper (web/helpers.go), then referenced in the web template (web/navigation.templ).
 
 **Note:** The UI itself is very basic, it's not a real web application, it's just designed to show how the different components work together in code. There are UI things that could be improved. Known UI bugs that probably have quick solutions but doesn't affect this demonstration:
-- after clicking a submenu item, it requires clicking twice to get it to open again
 - when strinking the window, the point where the bottom nav menu disappears and the left menu disappears is set differently
 
 ## Quick Start
