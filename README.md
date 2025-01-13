@@ -24,7 +24,7 @@ git git@github.com:josephspurrier/gohtmxapp.git
 cd gohtmxapp
 
 # Create the config.
-cp sample.env .env
+cp example.env .env
 
 # Install the dependencies.
 make install
